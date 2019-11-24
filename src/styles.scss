@@ -1,0 +1,42 @@
+
+/* You can add global  asdstyles to this file, and also import other style files */
+
+svg {
+    height: 100%;
+}
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell.new-row{
+    background-color: #1dbb99 !important;
+}
+
+
+ng-image-slider {
+    .container {
+        padding: 0;
+        custom-img {
+            img {
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.cursor-pointer:hover{
+    cursor: pointer;
+}
+
+.text-wrap{
+    overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;
+}
+
+.bg-img {
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.bg-img-cover {
+        background-size: cover;
+    }
+
+    &.bg-img-contain {
+        background-size: contain;
+    }
+}
