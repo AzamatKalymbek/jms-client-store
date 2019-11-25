@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import { KmeanComponent } from './kmean/kmean.component';
 import { MaxminComponent } from './maxmin/maxmin.component';
 import { AvoComponent } from './avo/avo.component';
+import { ReduceComponent } from './reduce/reduce.component';
 
 @NgModule({
     imports: [
@@ -13,6 +14,6 @@ import { AvoComponent } from './avo/avo.component';
         WorkspaceRoutingModule,
         FormsModule,
     ],
-    declarations: [WorkspaceComponent, KmeanComponent, MaxminComponent, AvoComponent],
+    declarations: [WorkspaceComponent, KmeanComponent, MaxminComponent, AvoComponent, ReduceComponent],
 })
 export class WorkspaceModule {}

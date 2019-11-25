@@ -23,4 +23,8 @@ export class AlgService {
     getAvo(clusterCount, gammaParam): Observable<any> {
         return this.http.get(this.baseUrl + `/avo/${clusterCount}/${gammaParam}`);
     }
+
+    getReduce(initialValue, reduceValue): Observable<any> {
+        return this.http.get(this.baseUrl + `/reduce/${initialValue}/${reduceValue}`);
+    }
 }
