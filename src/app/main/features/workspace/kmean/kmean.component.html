@@ -1,0 +1,17 @@
+<h2 class="text-center mt-2">
+  <span *ngIf="viaNearestNeighbor"> Via nearest neighbor </span>
+  <span *ngIf="!viaNearestNeighbor">K - mean</span>
+</h2>
+<div class="row mt-5 justify-content-center">
+  <p class="col-md-6">
+    <span class="font-weight-bold">Functional Quality: </span> {{functionalQuality}}
+  </p>
+</div>
+
+<div class="text-center mt-2">
+  <canvas  #canvasEl width="600" height="600"
+           style="border:1px solid #d3d3d3;">
+    Your browser does not support the canvas element.
+  </canvas>
+</div>
+<hr>

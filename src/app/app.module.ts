@@ -3,6 +3,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {AppRoutes} from "./app.routing";
 import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import {RouterModule} from "@angular/router";
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         RouterModule.forRoot(AppRoutes, {useHash: true}),
     ],
     providers: [],

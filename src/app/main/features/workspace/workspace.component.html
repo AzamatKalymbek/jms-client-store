@@ -1,3 +1,42 @@
-<div>
-Salem !!
+<div class="row mt-5 justify-content-center">
+    <label class="mr-2">Cluster count: </label>
+    <select class="col-md-1" [(ngModel)]="clusterCount">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
 </div>
+
+<!--<div class="row">-->
+<!--    <div class="col-md-6">-->
+<!--        <app-kmean [viaNearestNeighbor]="false" [clusterCount]="clusterCount"></app-kmean>-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--        <app-kmean [viaNearestNeighbor]="true"  [clusterCount]="clusterCount"></app-kmean>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="row">-->
+<!--    <div class="col-md-6">-->
+<!--        <app-maxmin [viaNearestNeighbor]="false" [viaMatrixDistance]="true"  [clusterCount]="clusterCount"></app-maxmin>-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--        <app-maxmin [viaNearestNeighbor]="false" [viaMatrixDistance]="false" [clusterCount]="clusterCount"></app-maxmin>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--    <div class="col-md-6">-->
+<!--        <app-maxmin [viaNearestNeighbor]="true" [viaMatrixDistance]="true"  [clusterCount]="clusterCount"></app-maxmin>-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--        <app-maxmin [viaNearestNeighbor]="true" [viaMatrixDistance]="false" [clusterCount]="clusterCount"></app-maxmin>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<app-avo [clusterCount]="clusterCount"></app-avo>
+
