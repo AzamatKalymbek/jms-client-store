@@ -6,6 +6,8 @@ import {Component} from '@angular/core';
     styleUrls: ['./workspace.component.scss']
 })
 export class WorkspaceComponent {
-    clusterCount = 3;
+
+    switch = true;
+
 }
 

@@ -7,6 +7,8 @@ import { KmeanComponent } from './kmean/kmean.component';
 import { MaxminComponent } from './maxmin/maxmin.component';
 import { AvoComponent } from './avo/avo.component';
 import { ReduceComponent } from './reduce/reduce.component';
+import { AlgComponent } from './alg/alg.component';
+import { AlgSynthesisComponent } from './alg-synthesis/alg-synthesis.component';
 
 @NgModule({
     imports: [
@@ -14,6 +16,6 @@ import { ReduceComponent } from './reduce/reduce.component';
         WorkspaceRoutingModule,
         FormsModule,
     ],
-    declarations: [WorkspaceComponent, KmeanComponent, MaxminComponent, AvoComponent, ReduceComponent],
+    declarations: [WorkspaceComponent, KmeanComponent, MaxminComponent, AvoComponent, ReduceComponent, AlgComponent, AlgSynthesisComponent],
 })
 export class WorkspaceModule {}

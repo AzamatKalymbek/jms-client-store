@@ -1,0 +1,56 @@
+<p class="text-center font-weight-bold">
+    Parameters Center Matrix
+</p>
+<div class="row mt-5 justify-content-center">
+    <div class="col-md-3">
+        <label for="delta" class="mr-2">Delta value: </label>
+        <input id="delta" type="number" [(ngModel)]="deltaParam" (change)="start()">
+    </div>
+</div>
+<div class="table-responsive" style="overflow-x:auto;">
+    <table class="table table-hover mb-5 ml-2 mr-2" *ngIf="this.synth">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th *ngFor="let algParams of this.synth.centerMatrix[0]; let i = index">{{i + 1}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let algParams of this.synth.centerMatrix; let i = index">
+            <td style="min-width: 220px;">{{this.synth.algNames[i]}}</td>
+            <td *ngFor="let param of algParams">{{param}}</td>
+        </tr>
+        <tr>
+            <td style="min-width: 220px;" class="font-weight-bold">Zero count</td>
+            <td *ngFor="let zeroCount of this.synth.centerMatrixCountBefore;"
+                class="font-weight-bold">{{zeroCount}}</td>
+        </tr>
+        <tr>
+            <td style="min-width: 220px;" class="font-weight-bold text-info">Selected zero count</td>
+            <td *ngFor="let zeroCount of this.synth.centerMatrixCount;"
+                class="font-weight-bold text-info">{{zeroCount}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<div  class="text-center mt-2">
+    <h2>Algorithm table</h2>
+    <table class="table table-hover mb-5">
+        <thead>
+        <tr>
+            <th>Algorithm name</th>
+            <th>Functional quality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let algT of synth.fqMatrix; let i = index"
+            [ngClass]="{'table-danger': algT === maxi,
+                        'table-info'  : algT === mini }">
+            <td style="min-width: 220px;">{{this.synth.algNames[i]}}</td>
+            <td>{{algT}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
