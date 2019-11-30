@@ -20,8 +20,8 @@ export class AlgService {
         return this.http.get(this.baseUrl + `/max-min/${clusterCount}/${iterCount}/${viaNearestNeighbor}/${viaMatrixDistance}`);
     }
 
-    getAvo(clusterCount, gammaParam): Observable<any> {
-        return this.http.get(this.baseUrl + `/avo/${clusterCount}/${gammaParam}`);
+    getAvo(clusterCount, iterCount, gammaParam, sourceFileName): Observable<any> {
+        return this.http.get(this.baseUrl + `/avo/${clusterCount}/${iterCount}/${gammaParam}/${sourceFileName}`);
     }
 
     getReduce(initialValue, reduceValue): Observable<any> {

@@ -1,35 +1,25 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    SimpleChanges,
-    ViewChild
-} from '@angular/core';
-import {Canvas} from "@core/canvas";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {AlgService} from "@core/alg.service";
 
 @Component({
-    selector: 'app-avo',
-    templateUrl: './avo.component.html',
-    styleUrls: ['./avo.component.scss']
+    selector: 'app-avo-table',
+    templateUrl: './avo-table.component.html',
+    styleUrls: ['./avo-table.component.scss']
 })
-export class AvoComponent extends Canvas implements OnInit, OnChanges {
-    @ViewChild('canvasEl2') canvasEl: ElementRef;
+export class AvoTableComponent implements OnInit, OnChanges {
     @Input() clusterCount: number;
     @Output() addFQ: EventEmitter<any> = new EventEmitter<any>();
     gammaParam = 0;
     gammaParamList = [];
+    functionalQuality = 0.0;
+    clusters = [];
+
+    objCount = 0;
 
     constructor(private alg: AlgService) {
-        super();
     }
 
     ngOnInit(): void {
-        this.drawCortesian(this.canvasEl);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -39,7 +29,7 @@ export class AvoComponent extends Canvas implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getAvo(this.clusterCount, this.gammaParam).toPromise().then(response => {
+        this.alg.getAvo(this.clusterCount, 50, this.gammaParam, "data.txt").toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
@@ -47,15 +37,21 @@ export class AvoComponent extends Canvas implements OnInit, OnChanges {
             for (let i = 0; i < gammaParamSize; i++) {
                 this.gammaParamList.push(i);
             }
-            this.drawDots();
+            this.objectsCount();
         });
     }
 
-    addFQs(){
+    addFQs() {
         let objTable = {
             name: 'AVO',
             fQuality: this.functionalQuality
         };
         this.addFQ.emit(objTable);
+    }
+
+    objectsCount(){
+        for(let cluster of this.clusters){
+            this.objCount += cluster.objects.length;
+        }
     }
 }

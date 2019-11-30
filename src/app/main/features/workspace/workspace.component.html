@@ -1,4 +1,13 @@
 <div class="text-center mt-5 cursor-pointer">
+        <span (click)="TWOdimension = true" [ngClass]="{'text-info': TWOdimension }">
+       [ 2D ]
+    </span>
+    <span (click)="TWOdimension = false" [ngClass]="{'text-info': !TWOdimension }">
+       [ 16D ]
+    </span>
+</div>
+
+<div class="text-center mt-5 cursor-pointer">
     <span (click)="switch = true" [ngClass]="{'text-info': switch }">
        [ Algorithms ]
     </span>
@@ -8,8 +17,16 @@
 </div>
 
 
-<div *ngIf="switch">
-    <app-alg></app-alg>
+<div *ngIf="TWOdimension">
+    <div *ngIf="switch">
+        <app-alg></app-alg>
+    </div>
+</div>
+
+<div *ngIf="!TWOdimension">
+    <div *ngIf="switch">
+        <app-alg-mult-d></app-alg-mult-d>
+    </div>
 </div>
 
 <div *ngIf="!switch">

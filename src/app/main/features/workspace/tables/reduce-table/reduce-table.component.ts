@@ -1,35 +1,23 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    SimpleChanges,
-    ViewChild
-} from '@angular/core';
-import {AlgService} from '@core/alg.service';
-import {Canvas} from '@core/canvas';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {AlgService} from "@core/alg.service";
 
 @Component({
-    selector: 'app-reduce',
-    templateUrl: './reduce.component.html',
-    styleUrls: ['./reduce.component.scss']
+    selector: 'app-reduce-table',
+    templateUrl: './reduce-table.component.html',
+    styleUrls: ['./reduce-table.component.scss']
 })
-export class ReduceComponent extends Canvas implements OnInit, OnChanges {
-    @ViewChild('canvasEl4') canvasEl: ElementRef;
+export class ReduceTableComponent implements OnInit, OnChanges {
     @Input() clusterCount: number;
     @Output() addFQ: EventEmitter<any> = new EventEmitter<any>();
-    initialValue = 7;
-    reduceValue = 5;
+    initialValue = 5;
+    reduceValue = 3;
+    functionalQuality = 0.0;
+    clusters = [];
 
     constructor(private alg: AlgService) {
-        super();
     }
 
     ngOnInit(): void {
-        this.drawCortesian(this.canvasEl);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -43,16 +31,16 @@ export class ReduceComponent extends Canvas implements OnInit, OnChanges {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
-            this.drawDots();
         });
     }
 
 
-    addFQs(){
+    addFQs() {
         let objTable = {
             name: 'Reduce centroid (from ' + this.initialValue + ' to ' + this.reduceValue + ')',
             fQuality: this.functionalQuality
         };
         this.addFQ.emit(objTable);
     }
+
 }

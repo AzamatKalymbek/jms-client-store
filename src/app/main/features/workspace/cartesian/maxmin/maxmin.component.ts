@@ -15,7 +15,6 @@ import {Canvas} from "@core/canvas";
 @Component({
     selector: 'app-maxmin',
     templateUrl: './maxmin.component.html',
-    styleUrls: ['./maxmin.component.scss']
 })
 export class MaxminComponent extends Canvas implements OnInit, OnChanges {
 
@@ -50,7 +49,7 @@ export class MaxminComponent extends Canvas implements OnInit, OnChanges {
 
     addFQs(){
         let objTable = {
-            name: (this.viaNearestNeighbor ? 'Nearest neighbor  + Max - Min' : ' K-mean + Max - Min') +
+            name: (this.viaNearestNeighbor ? 'Nearest neighbor  + Max - Min' : 'Max - Min + K-mean') +
                   (this.viaMatrixDistance  ? ' (via matrix distance) ' : ''),
             fQuality: this.functionalQuality
         };

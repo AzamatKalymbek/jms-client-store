@@ -15,7 +15,6 @@ import {Canvas} from "@core/canvas";
 @Component({
     selector: 'app-kmean',
     templateUrl: './kmean.component.html',
-    styleUrls: ['./kmean.component.scss']
 })
 export class KmeanComponent extends Canvas implements OnInit, OnChanges {
 

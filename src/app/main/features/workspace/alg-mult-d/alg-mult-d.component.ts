@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-alg',
-  templateUrl: './alg.component.html'
+  selector: 'app-alg-mult-d',
+  templateUrl: './alg-mult-d.component.html',
 })
-export class AlgComponent {
+export class AlgMultDComponent {
   clusterCount = 3;
+
   algTable = [];
   maxi = 0;
   mini = 0;
@@ -35,4 +36,5 @@ export class AlgComponent {
       }
     });
   }
+
 }
