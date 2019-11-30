@@ -1,62 +1,88 @@
 <div class="row mt-5 justify-content-center">
-  <label class="mr-2">Cluster count: </label>
-  <select class="col-md-1" [(ngModel)]="clusterCount">
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-  </select>
+    <label class="mr-2">Cluster count: </label>
+    <select class="col-md-1" [(ngModel)]="clusterCount">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
 </div>
 
-<!--<div class="row">-->
-<!--  <div class="col-md-6">-->
-<!--    <app-kmean-table [viaNearestNeighbor]="false" [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-kmean-table>-->
-<!--  </div>-->
-<!--  <div class="col-md-6">-->
-<!--    <app-kmean-table [viaNearestNeighbor]="true"  [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-kmean-table>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--  <div class="col-md-6">-->
-<!--    <app-maxmin-table [viaNearestNeighbor]="false" [viaMatrixDistance]="true"  [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-maxmin-table>-->
-<!--  </div>-->
-<!--  <div class="col-md-6">-->
-<!--    <app-maxmin-table [viaNearestNeighbor]="false" [viaMatrixDistance]="false" [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-maxmin-table>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--  <div class="col-md-6">-->
-<!--    <app-maxmin-table [viaNearestNeighbor]="true" [viaMatrixDistance]="true"  [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-maxmin-table>-->
-<!--  </div>-->
-<!--  <div class="col-md-6">-->
-<!--    <app-maxmin-table [viaNearestNeighbor]="true" [viaMatrixDistance]="false" [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-maxmin-table>-->
-<!--  </div>-->
-<!--</div>-->
+<ngb-tabset type="pills" destroyOnHide="true">
+    <ngb-tab title="K mean">
+        <ng-template ngbTabContent>
+            <app-kmean-table [viaNearestNeighbor]="false" [clusterCount]="clusterCount"
+                             (addFQ)="addFQ($event)"></app-kmean-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Via nearest neighbor">
+        <ng-template ngbTabContent>
+            <app-kmean-table [viaNearestNeighbor]="true" [clusterCount]="clusterCount"
+                             (addFQ)="addFQ($event)"></app-kmean-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="AVO">
+        <ng-template ngbTabContent>
+            <app-avo-table [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-avo-table>
+        </ng-template>
+    </ngb-tab>
 
 
-<app-avo-table [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-avo-table>
-<!--<app-reduce-table [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-reduce-table>-->
+    <ngb-tab title="Max - Min (via matrix distance) + K-mean">
+        <ng-template ngbTabContent>
+            <app-maxmin-table [viaNearestNeighbor]="false" [viaMatrixDistance]="true" [clusterCount]="clusterCount"
+                              (addFQ)="addFQ($event)"></app-maxmin-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Max - Min + K-mean">
+        <ng-template ngbTabContent>
+            <app-maxmin-table [viaNearestNeighbor]="false" [viaMatrixDistance]="false" [clusterCount]="clusterCount"
+                              (addFQ)="addFQ($event)"></app-maxmin-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Max - Min (via matrix distance) + Nearest neighbor">
+        <ng-template ngbTabContent>
+            <app-maxmin-table [viaNearestNeighbor]="true" [viaMatrixDistance]="true" [clusterCount]="clusterCount"
+                              (addFQ)="addFQ($event)"></app-maxmin-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Max - Min + Nearest neighbor">
+        <ng-template ngbTabContent>
+            <app-maxmin-table [viaNearestNeighbor]="true" [viaMatrixDistance]="false" [clusterCount]="clusterCount"
+                              (addFQ)="addFQ($event)"></app-maxmin-table>
+        </ng-template>
+    </ngb-tab>
 
 
-<!--<h2 class="text-center">Algorithm table</h2>-->
-<!--<table class="table table-hover mb-5">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>ID</th>-->
-<!--    <th>Algorithm name</th>-->
-<!--    <th>Functional quality</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let algT of algTable; let i = index"-->
-<!--      [ngClass]="{'table-danger': algT.fQuality === maxi,-->
-<!--                    'table-info'  : algT.fQuality === mini }">-->
-<!--    <td>{{i + 1}}</td>-->
-<!--    <td>{{algT.name}}</td>-->
-<!--    <td>{{algT.fQuality}}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
+    <ngb-tab title="Reduce centroid">
+        <ng-template ngbTabContent>
+            <app-reduce-table [clusterCount]="clusterCount" (addFQ)="addFQ($event)"></app-reduce-table>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Result">
+        <ng-template ngbTabContent>
+
+            <h2 class="text-center">Algorithm table</h2>
+            <table class="table table-hover mb-5">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Algorithm name</th>
+                    <th>Functional quality</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let algT of algTable; let i = index"
+                    [ngClass]="{'table-danger': algT.fQuality === maxi,
+                          'table-info'  : algT.fQuality === mini }">
+                    <td>{{i + 1}}</td>
+                    <td>{{algT.name}}</td>
+                    <td>{{algT.fQuality}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>
+

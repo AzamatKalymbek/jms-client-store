@@ -38,7 +38,7 @@ export class KmeanComponent extends Canvas implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getKmean(this.clusterCount, 50, this.viaNearestNeighbor).toPromise().then(response => {
+        this.alg.getKmean(this.clusterCount, 50, this.viaNearestNeighbor, "2d_data.txt").toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();

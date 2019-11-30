@@ -11,7 +11,7 @@ export class AlgMultDComponent {
   maxi = 0;
   mini = 0;
 
-  addFQ(obj){
+  addFQ(obj) {
     this.algTable.push(obj);
     this.max();
     this.min();
@@ -19,9 +19,9 @@ export class AlgMultDComponent {
 
   max() {
     this.maxi = this.algTable.reduce((a, b) => {
-      if(a.fQuality === undefined){
+      if (a.fQuality === undefined) {
         return Math.max(a, b.fQuality);
-      }else{
+      }else {
         return Math.max(a.fQuality, b.fQuality);
       }
     });
@@ -29,9 +29,9 @@ export class AlgMultDComponent {
 
   min() {
     this.mini = this.algTable.reduce((a, b) => {
-      if(a.fQuality === undefined){
+      if (a.fQuality === undefined) {
         return Math.min(a, b.fQuality);
-      }else{
+      }else {
         return Math.min(a.fQuality, b.fQuality);
       }
     });

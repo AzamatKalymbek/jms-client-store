@@ -1,3 +1,38 @@
-<p>
-  maxmin-table works!
-</p>
+<h2 class="text-center mt-2">
+  <span *ngIf="viaNearestNeighbor">
+     Nearest neighbor  + Max - Min
+  </span>
+    <span *ngIf="!viaNearestNeighbor">
+     K-mean  + Max - Min
+  </span>
+    <span *ngIf="viaMatrixDistance"> (via matrix distance) </span>
+</h2>
+
+<div class="ml-3">
+  <p>Функциональное качество:  <b>{{functionalQuality}}</b></p>
+  <p>Количество объектов:      <b>{{objCount}}</b></p>
+  <p>Количество кластеров:     <b>{{clusters.length}}</b></p>
+</div>
+
+<table class="table table-hover mb-5 ml-2 mr-2" *ngIf="clusters">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th *ngFor="let attr of clusters[0].center.attributes; let i = index">#{{i + 1}} Param</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let cluster of clusters; let i = index">
+        <tr class="table-danger">
+            <td>Центр {{i + 1}}</td>
+            <td *ngFor="let attr of cluster.center.attributes">{{attr}}</td>
+        </tr>
+        <tr *ngFor="let obj of cluster.objects; let i = index">
+            <td>#{{i + 1}}</td>
+            <td *ngFor="let attr of obj.attributes">{{attr}}</td>
+        </tr>
+    </ng-container>
+    </tbody>
+</table>
+
+<hr>

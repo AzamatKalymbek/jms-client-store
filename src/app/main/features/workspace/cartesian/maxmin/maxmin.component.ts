@@ -9,8 +9,8 @@ import {
     SimpleChanges,
     ViewChild
 } from '@angular/core';
-import {AlgService} from "@core/alg.service";
-import {Canvas} from "@core/canvas";
+import {AlgService} from '@core/alg.service';
+import {Canvas} from '@core/canvas';
 
 @Component({
     selector: 'app-maxmin',
@@ -39,16 +39,16 @@ export class MaxminComponent extends Canvas implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getMaxmin(this.clusterCount, 50, this.viaNearestNeighbor, this.viaMatrixDistance).toPromise().then(response => {
+        this.alg.getMaxmin(this.clusterCount, 50, this.viaNearestNeighbor, this.viaMatrixDistance, '2d_data.txt').toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
             this.drawDots();
-        })
+        });
     }
 
-    addFQs(){
-        let objTable = {
+    addFQs() {
+        const objTable = {
             name: (this.viaNearestNeighbor ? 'Nearest neighbor  + Max - Min' : 'Max - Min + K-mean') +
                   (this.viaMatrixDistance  ? ' (via matrix distance) ' : ''),
             fQuality: this.functionalQuality

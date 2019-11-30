@@ -33,7 +33,7 @@ export class AvoTableComponent implements OnInit, OnChanges {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
-            let gammaParamSize = this.clusters[0].objects[0].attributes.length;
+            const gammaParamSize = this.clusters[0].objects[0].attributes.length;
             for (let i = 0; i < gammaParamSize; i++) {
                 this.gammaParamList.push(i);
             }
@@ -42,15 +42,15 @@ export class AvoTableComponent implements OnInit, OnChanges {
     }
 
     addFQs() {
-        let objTable = {
+        const objTable = {
             name: 'AVO',
             fQuality: this.functionalQuality
         };
         this.addFQ.emit(objTable);
     }
 
-    objectsCount(){
-        for(let cluster of this.clusters){
+    objectsCount() {
+        for (const cluster of this.clusters){
             this.objCount += cluster.objects.length;
         }
     }

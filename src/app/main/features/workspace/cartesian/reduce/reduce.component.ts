@@ -38,7 +38,7 @@ export class ReduceComponent extends Canvas implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getReduce(this.initialValue, this.reduceValue).toPromise().then(response => {
+        this.alg.getReduce(this.initialValue, this.reduceValue, '2d_data.txt').toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
@@ -47,8 +47,8 @@ export class ReduceComponent extends Canvas implements OnInit, OnChanges {
     }
 
 
-    addFQs(){
-        let objTable = {
+    addFQs() {
+        const objTable = {
             name: 'Reduce centroid (from ' + this.initialValue + ' to ' + this.reduceValue + ')',
             fQuality: this.functionalQuality
         };

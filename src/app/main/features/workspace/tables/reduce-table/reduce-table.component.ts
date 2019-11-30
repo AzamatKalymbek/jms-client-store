@@ -13,6 +13,7 @@ export class ReduceTableComponent implements OnInit, OnChanges {
     reduceValue = 3;
     functionalQuality = 0.0;
     clusters = [];
+    objCount = 0;
 
     constructor(private alg: AlgService) {
     }
@@ -27,20 +28,26 @@ export class ReduceTableComponent implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getReduce(this.initialValue, this.reduceValue).toPromise().then(response => {
+        this.alg.getReduce(this.initialValue, this.reduceValue, 'data.txt').toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
+            this.objectsCount();
         });
     }
 
 
     addFQs() {
-        let objTable = {
+        const objTable = {
             name: 'Reduce centroid (from ' + this.initialValue + ' to ' + this.reduceValue + ')',
             fQuality: this.functionalQuality
         };
         this.addFQ.emit(objTable);
     }
 
+    objectsCount() {
+        for (const cluster of this.clusters) {
+            this.objCount += cluster.objects.length;
+        }
+    }
 }

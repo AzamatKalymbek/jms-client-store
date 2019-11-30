@@ -14,6 +14,8 @@ export class MaxminTableComponent implements OnInit, OnChanges {
     functionalQuality = 0.0;
     clusters = [];
 
+    objCount = 0;
+
     constructor(private alg: AlgService) {
     }
 
@@ -27,20 +29,26 @@ export class MaxminTableComponent implements OnInit, OnChanges {
     }
 
     start() {
-        this.alg.getMaxmin(this.clusterCount, 50, this.viaNearestNeighbor, this.viaMatrixDistance).toPromise().then(response => {
+        this.alg.getMaxmin(this.clusterCount, 50, this.viaNearestNeighbor, this.viaMatrixDistance, 'data.txt').toPromise().then(response => {
             this.clusters = response.ALG;
             this.functionalQuality = response.FQ;
             this.addFQs();
-        })
+            this.objectsCount();
+        });
     }
 
     addFQs() {
-        let objTable = {
-            name: (this.viaNearestNeighbor ? 'Nearest neighbor  + Max - Min' : 'Max - Min + K-mean') +
+        const objTable = {
+            name: (this.viaNearestNeighbor ? 'Max - Min + Nearest neighbor' : 'Max - Min + K-mean') +
                 (this.viaMatrixDistance ? ' (via matrix distance) ' : ''),
             fQuality: this.functionalQuality
         };
         this.addFQ.emit(objTable);
     }
 
+    objectsCount() {
+        for (const cluster of this.clusters) {
+            this.objCount += cluster.objects.length;
+        }
+    }
 }

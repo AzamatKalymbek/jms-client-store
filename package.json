@@ -57,6 +57,7 @@
     "ngx-nvd3": "^1.0.9",
     "ngx-perfect-scrollbar": "^5.3.5",
     "ngx-swiper-wrapper": "^6.0.0",
+    "ngx-tabs": "0.0.13",
     "rickshaw": "^1.6.5",
     "rxjs": "6.0.0",
     "rxjs-compat": "^6.5.2",

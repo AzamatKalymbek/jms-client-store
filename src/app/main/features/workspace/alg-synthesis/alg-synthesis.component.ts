@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AlgSyntethisService} from "@core/alg-syntethis.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {AlgSyntethisService} from "@core/alg-syntethis.service";
 })
 export class AlgSynthesisComponent implements OnInit {
 
-    sourseFileName = "data.txt";
+    @Input() sourseFileName;
     deltaParam = 3;
     synth: any;
     maxi = 0;

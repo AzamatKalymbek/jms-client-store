@@ -14,12 +14,13 @@ import { AvoTableComponent } from './tables/avo-table/avo-table.component';
 import { KmeanTableComponent } from './tables/kmean-table/kmean-table.component';
 import { ReduceTableComponent } from './tables/reduce-table/reduce-table.component';
 import { MaxminTableComponent } from './tables/maxmin-table/maxmin-table.component';
+import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
         CommonModule,
         WorkspaceRoutingModule,
-        FormsModule,
+        FormsModule, NgbTabsetModule
     ],
     declarations: [WorkspaceComponent, KmeanComponent, MaxminComponent, AvoComponent, ReduceComponent, AlgComponent, AlgSynthesisComponent, AlgMultDComponent, AvoTableComponent, KmeanTableComponent, ReduceTableComponent, MaxminTableComponent],
 })
